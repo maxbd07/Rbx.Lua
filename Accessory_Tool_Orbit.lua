@@ -4,21 +4,18 @@
 
 
 local options = {
-    OrbitSpeed = 1,
-    OrbitDistanceOffset = 1,
+	OrbitSpeed = 1,
+	OrbitDistanceOffset = 1,
 	OrbitSpeedAdjustMultiplier = 1,
-    AdjustableSpeed = true,
+	AdjustableSpeed = true,
 	AlwaysEquipped = true,
-
-    Hotkeys = {
-        IncreaseSpeed = Enum.KeyCode.E,
-        DecreaseSpeed = Enum.KeyCode.Q
-    },
-
-    IgnorableAccessories = {
-        "PeanutbutterSparkletimeHair",
-        "VoidScythe"
-    }
+	
+	Hotkeys = {
+		IncreaseSpeed = Enum.KeyCode.E,
+		DecreaseSpeed = Enum.KeyCode.Q
+	},
+	
+	IgnorableAccessories = {}
 }
 
 
@@ -42,19 +39,20 @@ local functions = {
 			if tvB == nil then return nil else tvB:Destroy() end
 
 			tvB = Instance.new("Tool")
-            tvB.Name, tvB.CanBeDropped, tvB.Parent = pA.Name, false, BACKPACK
-            
-            tvA.Parent, tvA.Massless, tvB.Parent = tvB, true, CHARACTER
+			
+			tvB.Name, tvB.CanBeDropped, tvB.Parent = pA.Name, false, BACKPACK
+			tvA.Parent, tvA.Massless, tvB.Parent = tvB, true, CHARACTER
+			
 			return tvB
 		end
 
 		return nil
 	end,
-
-    AdjustToolGrip = function(pA, pB)
-        pA.Parent = BACKPACK
+	
+	AdjustToolGrip = function(pA, pB)
+		pA.Parent = BACKPACK
 		pA.Grip = CFrame.new(pB)
-        pA.Parent = CHARACTER
+		pA.Parent = CHARACTER
 	end,
 
 	FindTableValue = function(pA, pB)
@@ -73,9 +71,9 @@ local functions = {
 
 
 for lvA, lvB in next, CHARACTER:FindFirstChildOfClass("Humanoid"):GetAccessories() do
-    if lvB:FindFirstChild("Handle") ~= nil and functions.FindTableValue(options.IgnorableAccessories, lvB.Name) == false then
-        table.insert(vA, functions.AccessoryToTool(lvB))
-    end
+	if lvB:FindFirstChild("Handle") ~= nil and functions.FindTableValue(options.IgnorableAccessories, lvB.Name) == false then
+		table.insert(vA, functions.AccessoryToTool(lvB))
+	end
 end
 
 
@@ -86,10 +84,10 @@ vC = math.rad(360 / vB)
 
 
 UserInputService.InputBegan:Connect(function(UserInputInformation, isTyping)
-    if isTyping == false and options.AdjustableSpeed == true and UserInputInformation.UserInputType == Enum.UserInputType.Keyboard then
-        if UserInputInformation.KeyCode == options.Hotkeys.IncreaseSpeed then options.OrbitSpeed = options.OrbitSpeed + (1 * options.OrbitSpeedAdjustMultiplier) end
-        if UserInputInformation.KeyCode == options.Hotkeys.DecreaseSpeed then options.OrbitSpeed = options.OrbitSpeed - (1 * options.OrbitSpeedAdjustMultiplier) end
-    end
+	if isTyping == false and options.AdjustableSpeed == true and UserInputInformation.UserInputType == Enum.UserInputType.Keyboard then
+		if UserInputInformation.KeyCode == options.Hotkeys.IncreaseSpeed then options.OrbitSpeed = options.OrbitSpeed + (1 * options.OrbitSpeedAdjustMultiplier) end
+        	if UserInputInformation.KeyCode == options.Hotkeys.DecreaseSpeed then options.OrbitSpeed = options.OrbitSpeed - (1 * options.OrbitSpeedAdjustMultiplier) end
+    	end
 end)
 
 if options.AlwaysEquipped == true then
@@ -105,13 +103,13 @@ if options.AlwaysEquipped == true then
 end
 
 for lvA, lvB in next, vA do
-    local tvA = vC * math.rad(lvA * 50)
-    local tvB = Vector3.new(CHARACTER["Right Arm"].Size.X + (CHARACTER.HumanoidRootPart.Size.X / 2), -(CHARACTER.HumanoidRootPart.Size.Y + lvB.Handle.Size.Y), -(CHARACTER["Right Arm"].Size.Z + lvB.Handle.Size.Z))
+	local tvA = vC * math.rad(lvA * 50)
+	local tvB = Vector3.new(CHARACTER["Right Arm"].Size.X + (CHARACTER.HumanoidRootPart.Size.X / 2), -(CHARACTER.HumanoidRootPart.Size.Y + lvB.Handle.Size.Y), -(CHARACTER["Right Arm"].Size.Z + lvB.Handle.Size.Z))
 
-    RunService.RenderStepped:Connect(function()
-        if lvB.Parent == CHARACTER then
-            functions.AdjustToolGrip(lvB, Vector3.new(vB * math.cos(vC + tvA), 0, vB * math.sin(vC + tvA)) + tvB)
-            tvA = tvA + math.rad(options.OrbitSpeed)
-        end
-    end)
+    	RunService.RenderStepped:Connect(function()
+        	if lvB.Parent == CHARACTER then
+				functions.AdjustToolGrip(lvB, Vector3.new(vB * math.cos(vC + tvA), 0, vB * math.sin(vC + tvA)) + tvB)
+            			tvA = tvA + math.rad(options.OrbitSpeed)
+        	end
+    	end)
 end
