@@ -27,11 +27,11 @@ local options = {
 
 
 local function changestring(pA, pB)
-    local vA = ""
+	local vA = ""
 	
 	math.randomseed(pB)
 	
-    for lvA = 1, string.len(pA) do
+	for lvA = 1, string.len(pA) do
 		local tvA = math.random(1, table.getn(options.Emojis))
 
 		if math.random(0, 1) == 0 then
@@ -45,9 +45,9 @@ local function changestring(pA, pB)
 				vA = vA .. options.Emojis[tvA]
 			end	
 		end
-    end
+    	end
 
-    return vA
+	return vA
 end
 
 local metatable = getrawmetatable(game)
@@ -58,12 +58,12 @@ local proxy = {__namecall = metatable.__namecall}
 setreadonly(metatable, false)
 
 metatable.__namecall = function(self, ...)
-    if self.Name == "SayMessageRequest" then
-        local arguments = {...}
-        return proxy.__namecall(self, changestring(arguments[1], string.len(arguments[1])), arguments[2])
-    end
+	if self.Name == "SayMessageRequest" then
+        	local arguments = {...}
+        	return proxy.__namecall(self, changestring(arguments[1], string.len(arguments[1])), arguments[2])
+    	end
 
-    return proxy.__namecall(self, ...)
+	return proxy.__namecall(self, ...)
 end
 
 setreadonly(metatable, true)
