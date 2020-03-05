@@ -1,4 +1,4 @@
--- Vector3 Hat Orbitter; exploiting network ownership and tool client-server replication.
+-- Accessory Tool Orbit; exploiting network ownership and tool client-server replication.
 -- Author: maxbd (maxbd07, maxbd123, 0xEB)
 
 
