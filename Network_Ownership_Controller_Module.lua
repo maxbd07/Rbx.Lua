@@ -36,7 +36,7 @@ network.Release = function()
 
     for lvA, lvB in next, game:GetService("Players"):GetPlayers() do
         lvB.SimulationRadius = 0
-		lvB.MaximumSimulationRadius = 1000
+	lvB.MaximumSimulationRadius = 1000
     end
 end
 
