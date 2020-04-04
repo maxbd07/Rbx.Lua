@@ -14,9 +14,8 @@ network.Claim = function()
 
     for lvA, lvB in next, game:GetService("Players"):GetPlayers() do
         lvB.MaximumSimulationRadius = lvB ~= network.PLAYER and 0 or math.huge
+	lvB.SimulationRadius = lvB ~= network.PLAYER and 0 or math.huge
     end
-
-    network.PLAYER.SimulationRadius = math.huge
 end
 
 network.Lock = function()
