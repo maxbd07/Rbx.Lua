@@ -1,4 +1,4 @@
--- Retarded Chat; Using a "__namecall" hook
+-- Retarded Chat; using a "__namecall" hook
 -- Author: maxbd (maxbd07, maxbd123, 0xEB)
 
 
