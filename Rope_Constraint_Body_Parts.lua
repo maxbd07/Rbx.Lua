@@ -1,6 +1,9 @@
 -- Rope Constraint Body Parts; exploiting network ownership.
 -- Author: maxbd (maxbd07, maxbd123, 0xEB)
 
+-- Rig Type R6 Support: true
+-- Rig Type R15 Support: false
+
 
 
 local options = {
