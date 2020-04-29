@@ -8,8 +8,8 @@
 
 local options = {
 	RopeLength = 0.1,
-    	RopeLocallyVisible = false,
-	ZeroGravityParts = false
+	ZeroGravityParts = false,
+	RopeLocallyVisible = false
 }
 
 
@@ -33,7 +33,7 @@ if HUMANOID.RigType == Enum.HumanoidRigType.R6 then
         	CHARACTER:FindFirstChild("Right Leg"),
         	CHARACTER:FindFirstChild("Left Leg")
 	}
-	
+
 	vB = {
 		{vA[1]:FindFirstChild("Right Shoulder"), vA[1]:FindFirstChild("RightCollarAttachment"), vA[2]:FindFirstChild("RightShoulderAttachment")},
 		{vA[1]:FindFirstChild("Left Shoulder"), vA[1]:FindFirstChild("LeftCollarAttachment"), vA[3]:FindFirstChild("LeftShoulderAttachment")},
@@ -47,16 +47,16 @@ end
 local function fA(pA)
 	if pA[1] and pA[2] and pA[3] then
         	local tvA, tvB = pA[2]:Clone(), pA[3]:Clone()
-		tvA.Parent, tvB.Parent = pA[2].Parent, pA[3].Parent
-		tvA.Position, tvB.Position = pA[4] or pA[2].Position, pA[5] or pA[3].Position
+        	tvA.Parent, tvB.Parent = pA[2].Parent, pA[3].Parent
+        	tvA.Position, tvB.Position = pA[4] or pA[2].Position, pA[5] or pA[3].Position
 
-		local tvC = Instance.new("RopeConstraint")
-		tvC.Parent = pA[1].Parent
-		tvC.Attachment0 = tvA
-		tvC.Attachment1 = tvB
+        	local tvC = Instance.new("RopeConstraint")
+        	tvC.Parent = pA[1].Parent
+        	tvC.Attachment0 = tvA
+        	tvC.Attachment1 = tvB
 
-		tvC.Length = options.RopeLength
-		tvC.Visible = options.RopeLocallyVisible
+        	tvC.Length = options.RopeLength
+        	tvC.Visible = options.RopeLocallyVisible
 
 		if options.ZeroGravityParts then
 			local tvD = Instance.new("BodyForce")
