@@ -50,12 +50,16 @@ local function changestring(pA, pB)
 	return vA
 end
 
+
+
 local metatable = getrawmetatable(game)
 local proxy = {__namecall = metatable.__namecall}
 
 
 
 setreadonly(metatable, false)
+
+
 
 metatable.__namecall = function(self, ...)
 	if self.Name == "SayMessageRequest" then
@@ -65,5 +69,7 @@ metatable.__namecall = function(self, ...)
 
 	return proxy.__namecall(self, ...)
 end
+
+
 
 setreadonly(metatable, true)
