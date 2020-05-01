@@ -21,7 +21,7 @@ local UserInputService = game:GetService("UserInputService")
 
 
 local PLAYER = Players.LocalPlayer
-local CHARACTER = PLAYER.Character
+local CHARACTER = PLAYER.Character or PLAYER.CharacterAdded:Wait()
 local BACKPACK = PLAYER.Backpack
 
 
