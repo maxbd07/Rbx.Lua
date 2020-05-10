@@ -1,3 +1,8 @@
+-- Zero Gravity Accessory Handle Orbit; Exploiting network ownership.
+-- Author: maxbd (maxbd07, maxbd123, 0xEB)
+
+
+
 local options = {
 	RopeLength = 5,
 	UpwardForceOffset = 10,
