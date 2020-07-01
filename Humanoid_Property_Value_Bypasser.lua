@@ -1,7 +1,7 @@
 -- Humanoid Property Value Bypasser; exploiting __index and __newindex metamethod functionality with wrapping.
 -- Author: maxbd (maxbd07, maxbd123, 0xEB)
 
--- Note: Isn't really something to show off, just wrote this quickly for a v3rmillion post.
+-- Note: Isn't really something to show off, just wrote this quickly for a v3rmillion post and decided to put it in here too.
 
 
 
