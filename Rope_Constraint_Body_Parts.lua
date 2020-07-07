@@ -76,5 +76,5 @@ end
 
 
 
-PLAYER.MaximumSimulationRadius = math.huge
-PLAYER.SimulationRadius = math.huge
+settings().Physics.AllowSleep = false
+setsimulationradius(math.huge)
