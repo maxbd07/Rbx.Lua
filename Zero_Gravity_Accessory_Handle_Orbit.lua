@@ -23,7 +23,7 @@ local Lighting = game:GetService("Lighting")
 
 local PLAYER = Players.LocalPlayer
 local CHARACTER = PLAYER.Character or PLAYER.CharacterAdded:Wait()
-local HUMANOID = CHARACTER:WaitForChild("Humanoid")
+local HUMANOID = CHARACTER:WaitForChild("Humanoid", 3) or CHARACTER:FindFirstChildOfClass("Humanoid")
 
 
 
@@ -72,5 +72,5 @@ end
 
 
 
-PLAYER.MaximumSimulationRadius = math.huge
-PLAYER.SimulationRadius = math.huge
+settings().Physics.AllowSleep = false
+setsimulationradius(math.huge)
