@@ -61,14 +61,14 @@ setreadonly(metatable, false)
 
 
 
-metatable.__namecall = function(self, ...)
+metatable.__namecall = newcclosure(function(self, ...)
 	if self.Name == "SayMessageRequest" then
         	local arguments = {...}
         	return proxy.__namecall(self, changestring(arguments[1], string.len(arguments[1])), arguments[2])
     	end
 
 	return proxy.__namecall(self, ...)
-end
+end)
 
 
 
