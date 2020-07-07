@@ -10,7 +10,13 @@ local options = {
 	RopeLength = 6,
 	UpwardForceOffset = 3,
 	RopeLocallyVisible = false,
-	HumanoidRootPartLocallyVisible = false
+	HumanoidRootPartLocallyVisible = false,
+	
+	
+	HotKeys = {
+		Lengthen = Enum.KeyCode.E,
+		Shorten = Enum.KeyCode.Q
+	}
 }
 
 
@@ -65,5 +71,24 @@ fA(PLAYER)
 
 
 
-PLAYER.MaximumSimulationRadius = math.huge
-PLAYER.SimulationRadius = math.huge
+UserInputService.InputBegan:Connect(function(UserInputInformation, IsTyping)
+	if not IsTyping and UserInputInformation.UserInputType == Enum.UserInputType.Keyboard then
+        	if UserInputInformation.KeyCode == Options.HotKeys.Lengthen then
+            		for lvA = 1, #vA do
+                		vA[lvA].Length = vA[lvA].Length + Options.RopeLengthIncrementValue
+            		end
+        	end
+        
+        	if UserInputInformation.KeyCode == Options.HotKeys.Shorten then
+            		for lvA = 1, #vA do
+                		if vA[lvA].Length - Options.RopeLengthIncrementValue >= 0 then
+                    			vA[lvA].Length = vA[lvA].Length - Options.RopeLengthIncrementValue
+                		end
+            		end
+        	end
+    	end
+end)
+
+
+settings().Physics.AllowSleep = false
+setsimulationradius(math.huge)
